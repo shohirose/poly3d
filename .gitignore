@@ -1,0 +1,12 @@
+# CMake
+build/
+
+# VSCode
+.vscode/
+
+# C, C++
+*.o
+*.exe
+*.lib
+*.a
+*.dll
