@@ -25,7 +25,7 @@
 # ---------------------------------------------------------------------------
 
 # Source Files
-SOURCES  = poly3d.c infcoeff.c matrix.c safetan.c getwords.c getoptPoly3D.c elastic.c nr.c nrutil.c
+SOURCES  = poly3d.cpp infcoeff.cpp matrix.cpp safetan.cpp getwords.cpp getoptPoly3D.cpp elastic.cpp nr.cpp nrutil.cpp
 # Object Files
 OBJECTS  = $(SOURCES:.c=.o)
 # Include Files
@@ -55,20 +55,20 @@ clean:
 # Dependency Tree
 # ---------------
 
-poly3d.o: poly3d.c $(INCLUDES)
+poly3d.o: poly3d.cpp $(INCLUDES)
 
-infcoeff.o: infcoeff.c infcoeff.h safetan.h pi.h
+infcoeff.o: infcoeff.cpp infcoeff.h safetan.h pi.h
 
-matrix.o: matrix.c matrix.h nr.h nrutil.h
+matrix.o: matrix.cpp matrix.h nr.h nrutil.h
 
-safetan.o: safetan.c safetan.h pi.h
+safetan.o: safetan.cpp safetan.h pi.h
 
-getwords.o: getwords.c getwords.h
+getwords.o: getwords.cpp getwords.h
 
-getoptPoly3D.o: getoptPoly3D.c getoptPoly3D.h
+getoptPoly3D.o: getoptPoly3D.cpp getoptPoly3D.h
 
-elastic.o: elastic.c elastic.h matrix.h
+elastic.o: elastic.cpp elastic.h matrix.h
 
-nrutil.o: nrutil.c nrutil.h
+nrutil.o: nrutil.cpp nrutil.h
 
-nr.o: nr.c nr.h
+nr.o: nr.cpp nr.h

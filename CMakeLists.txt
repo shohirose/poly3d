@@ -1,17 +1,17 @@
 cmake_minimum_required(VERSION 3.13)
-project(poly3d C CXX)
+project(poly3d CXX)
 
 add_executable(poly3d
     # Source files
-    poly3d.c
-    elastic.c
-    getoptPoly3D.c
-    getwords.c
-    infcoeff.c
-    matrix.c
-    nr.c
-    nrutil.c
-    safetan.c
+    poly3d.cpp
+    elastic.cpp
+    getoptPoly3D.cpp
+    getwords.cpp
+    infcoeff.cpp
+    matrix.cpp
+    nr.cpp
+    nrutil.cpp
+    safetan.cpp
     # Header files
     elastic.h
     getoptPoly3D.h
@@ -25,15 +25,13 @@ add_executable(poly3d
   )
 target_compile_features(poly3d
   PRIVATE
-    # c_std_11
-    # cxx_std_11
+    cxx_std_14
   )
 target_compile_options(poly3d
   PRIVATE
     -Wall
     -Wextra
     -Wpedantic
-    -ansi
   )
 target_include_directories(poly3d
   PRIVATE
