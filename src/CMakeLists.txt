@@ -1,0 +1,12 @@
+target_sources(poly3d
+  PRIVATE
+    poly3d.cpp
+    elastic.cpp
+    getoptPoly3D.cpp
+    getwords.cpp
+    infcoeff.cpp
+    matrix.cpp
+    nr.cpp
+    nrutil.cpp
+    safetan.cpp
+  )

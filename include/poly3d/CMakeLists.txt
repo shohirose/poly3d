@@ -1,0 +1,12 @@
+target_sources(poly3d
+  PUBLIC
+    elastic.h
+    getoptPoly3D.h
+    getwords.h
+    infcoeff.h
+    matrix.h
+    nr.h
+    nrutil.h
+    pi.h
+    safetan.h
+  )
