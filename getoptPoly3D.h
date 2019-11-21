@@ -10,11 +10,10 @@ SET TABSTOPS AT EVERY FOUR SPACES FOR PROPER DISPLAY
 * Header file for getopt.c
 *****************************************************************************/
 
-#ifndef getoptPoly3D_h_
-
+#ifndef POLY3D_GETOPTPOLY3D_H
+#define POLY3D_GETOPTPOLY3D_H
 
 /***************************** Includes/Defines ******************************/
-#define getoptPoly3D_h_
 
 #define FILE_ARG 0
 #define FLAG 1
@@ -39,4 +38,4 @@ extern char *getopt_arg_E;
 /****************************** Function Declarations ************************/
 int getoptPoly3D(char *arg_string, int argc, char *argv[]);
 
-#endif
+#endif // POLY3D_GETOPTPOLY3D_H

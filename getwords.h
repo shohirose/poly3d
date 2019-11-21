@@ -9,7 +9,8 @@ SET TABSTOPS AT EVERY FOUR SPACES FOR PROPER DISPLAY
 *
 * Header file for getwords.c
 *****************************************************************************/
-
+#ifndef POLY3D_GETWORDS_H
+#define POLY3D_GETWORDS_H
 
 /****************************** Includes/Defines ****************************/
 #define GW_EOF_ERR			-1
@@ -20,3 +21,5 @@ SET TABSTOPS AT EVERY FOUR SPACES FOR PROPER DISPLAY
 /**************************** Function Declarations *************************/
 int getwords(FILE *ifp, char *line, int maxline, char *word[], int maxwords,
 	char continue_char);
+
+#endif // POLY3D_GETWORDS_H

@@ -14,8 +14,8 @@ SET TABSTOPS AT EVERY FOUR SPACES FOR PROPER DISPLAY
 *       1992, Cambridge University Press, Cambridge, 994 p.
 *****************************************************************************/
 
-#ifndef _NR_UTILS_H_
-#define _NR_UTILS_H_
+#ifndef POLY3D_NRUTILS_H
+#define POLY3D_NRUTILS_H
 
 static float sqrarg;
 #define SQR(a) ((sqrarg=(a)) == 0.0 ? 0.0 : sqrarg*sqrarg)
@@ -83,4 +83,4 @@ void free_convert_matrix(float **b, long nrl, long nrh, long ncl, long nch);
 void free_f3tensor(float ***t, long nrl, long nrh, long ncl, long nch,
 	long ndl, long ndh);
 
-#endif /* _NR_UTILS_H_ */
+#endif // POLY3D_NRUTILS_H

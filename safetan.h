@@ -9,7 +9,8 @@ SET TABSTOPS AT EVERY FOUR SPACES FOR PROPER DISPLAY
 *
 * Header file for safetan.c
 *****************************************************************************/
-
+#ifndef POLY3D_SAFETAN_H
+#define POLY3D_SAFETAN_H
 
 /******************************** Constants *********************************/
 #define SAFE_ATAN_LIMIT	1e+20			/* max y/x for atan, atan2			*/
@@ -25,3 +26,5 @@ typedef double safetan_t;
 safetan_t	safe_atan(double y, double x);
 safetan_t	safe_atan2(double y, double x);
 safetan_t	safe_tan(double alpha);
+
+#endif // POLY3D_SAFETAN_H

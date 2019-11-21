@@ -9,7 +9,8 @@ SET TABSTOPS AT EVERY FOUR SPACES FOR PROPER DISPLAY
 *
 * Header file for matrix.c
 *****************************************************************************/
-
+#ifndef POLY3D_MATRIX_H
+#define POLY3D_MATRIX_H
 
 /***************************** Includes/Defines *****************************/
 #define		TRUE				1			/* true flag					*/
@@ -53,3 +54,4 @@ component_t	vector_magnitude(vector_t v);
 
 float		distance(vector_t v, vector_t w);
 
+#endif // POLY3D_MATRIX_H

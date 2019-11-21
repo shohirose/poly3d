@@ -9,6 +9,8 @@ SET TABSTOPS AT EVERY FOUR SPACES FOR PROPER DISPLAY
 *
 * Header file for elastic.c
 *****************************************************************************/
+#ifndef POLY3D_ELASTIC_H
+#define POLY3D_ELASTIC_H
 
 /******************************* Defines/Macros *****************************/
 #define		EC_DEFINED(A)	((A) >= 0)	/* Macro to test whether elastic	*/
@@ -26,3 +28,5 @@ void	strain_to_stress(double strain[3][3], double shear_mod,
 		double lame_lambda, double stress[3][3]);
 void	stress_to_strain(double stress[3][3], double youngs_mod,
 		double psn_ratio, double strain[3][3]);
+
+#endif // POLY3D_ELASTIC_H
