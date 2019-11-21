@@ -37,3 +37,7 @@ target_include_directories(poly3d
   PRIVATE
     ${PROJECT_SOURCE_DIR}
   )
+target_compile_definitions(poly3d
+  PUBLIC
+    $<$<PLATFORM_ID:Windows>:_USE_MATH_DEFINES>
+  )

@@ -12,6 +12,8 @@ SET TABSTOPS AT EVERY FOUR SPACES FOR PROPER DISPLAY
 #ifndef POLY3D_PI_H
 #define POLY3D_PI_H
 
-#define PI 3.14159265358979323846
+#include <cmath>
+
+#define PI M_PI
 
 #endif // POLY3D_PI_H
