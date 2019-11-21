@@ -30,17 +30,8 @@ SET TABSTOPS AT EVERY FOUR SPACES FOR PROPER DISPLAY
 *****************************************************************************/
 #define ROTATE(a,i,j,k,l) g=a[i][j];h=a[k][l];a[i][j]=g-s*(h+g*tau);\
 	a[k][l]=h+s*(g-h*tau);
-#if defined(__STDC__) || defined(ANSI) /* ANSI */
-void d_jacobi(double **a, int n, double d[], double **v, int *nrot)
-#else
-void d_jacobi(a, n, d, v, nrot)
-double	**a;
-int		n;
-double	d[];
-double	**v;
-int		*nrot;
-#endif
 
+void d_jacobi(double **a, int n, double d[], double **v, int *nrot)
 {
 	int j,iq,ip,i;
 	double tresh,theta,tau,t,sm,s,h,g,c,*b,*z;
@@ -128,15 +119,7 @@ int		*nrot;
 * and rearranges the columns of v correspondingly.  The method is straight
 * insertion.
 *****************************************************************************/
-#if defined(__STDC__) || defined(ANSI) /* ANSI */
 void d_eigsrt(double d[], double **v, int n)
-#else
-void d_eigsrt(d, v, n)
-double	d[];
-double	**v;
-int		n;
-#endif
-
 {
 	int k,j,i;
 	double p;
@@ -168,15 +151,8 @@ int		n;
 * combiniation with d_lubksb to solve linear equations or invert a matrix.
 *****************************************************************************/
 #define TINY 1.0e-20;
-#if defined(__STDC__) || defined(ANSI) /* ANSI */
+
 void d_ludcmp(double **a, int n, int *indx, double *d)
-#else
-void d_ludcmp(a, n, indx, d)
-double	**a;
-int		n;
-int		*indx;
-double	*d;
-#endif
 {
 	int i,imax,j,k;
 	double big,dum,sum,temp;
@@ -239,15 +215,7 @@ double	*d;
 * sides b.  This routine takes into account the possibility that b will begin
 * with many zero elements, so it is efficient for use in matrix inversion.
 ******************************************************************************/
-#if defined(__STDC__) || defined(ANSI) /* ANSI */
 void d_lubksb(double **a, int n, int *indx, double b[])
-#else
-void d_lubksb(a, n, indx, b)
-double	**a;
-int		n;
-int		*indx;
-double	b[];
-#endif
 {
 	int i,ii=0,ip,j;
 	double sum;

@@ -26,16 +26,7 @@ SET TABSTOPS AT EVERY FOUR SPACES FOR PROPER DISPLAY
 *			bm	- Bulk Modulus
 *			ll	- Lame Lambda
 ******************************************************************************/
-#if defined(__STDC__) || defined(ANSI) /* ANSI */
 int calc_elas_consts(elas_const_t *sm, elas_const_t *pr, elas_const_t *ym,elas_const_t *bm, elas_const_t *ll)
-#else
-int calc_elas_consts(sm, pr, ym, bm, ll)
-elas_const_t	*sm;
-elas_const_t	*pr;
-elas_const_t	*ym;
-elas_const_t	*bm;
-elas_const_t	*ll;
-#endif
 {
 	int num_defined;						/* # of consts already defined	*/
 	elas_const_t temp1, temp2;				/* temporary variables			*/
@@ -116,16 +107,7 @@ elas_const_t	*ll;
 *		lame_lambda - Lame lambda
 * Out:	stress		- the calculated stress tensor
 ****************************************************************************/
-#if defined(__STDC__) || defined(ANSI) /* ANSI */
 void strain_to_stress(double strain[3][3], double shear_mod,double lame_lambda, double stress[3][3])
-#else
-void strain_to_stress(strain, shear_mod, lame_lambda, stress)
-double	strain[3][3];
-double	shear_mod;
-double	lame_lambda;
-double	stress[3][3];
-#endif
-
 {
 	int		i,j;
 	double	strain_copy[3][3];
@@ -151,16 +133,7 @@ double	stress[3][3];
 *		psn_ratio	- Poisson's ratio
 * Out:	strain		- the calculated strain tensor
 ****************************************************************************/
-#if defined(__STDC__) || defined(ANSI) /* ANSI */
 void stress_to_strain(double stress[3][3], double youngs_mod,double psn_ratio, double strain[3][3])
-#else
-void stress_to_strain(stress, youngs_mod, psn_ratio, strain)
-double	stress[3][3];
-double	youngs_mod;
-double	psn_ratio;
-double	strain[3][3];
-#endif
-
 {
 	int		i,j,k;
 	double	stress_copy[3][3];

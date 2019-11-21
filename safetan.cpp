@@ -25,13 +25,7 @@ SET TABSTOPS AT EVERY FOUR SPACES FOR PROPER DISPLAY
 * Computes tan(alpha) avoiding the singularity at alpha = N*PI/2,
 * N = +/- 1,2,3....
 **************************************************************************/
-#if defined(__STDC__) || defined(ANSI) /* ANSI */
 safetan_t safe_tan(safetan_t alpha)
-#else
-safetan_t safe_tan(alpha)
-safetan_t alpha;
-#endif
-
 {
 
 	safetan_t	half_pi = PI/2.0;
@@ -58,15 +52,8 @@ safetan_t alpha;
 /*************************** function: safe_atan **************************
 * Computes atan(y/x) avoiding the singularities at x = 0 and x << y.
 **************************************************************************/
-#if defined(__STDC__) || defined(ANSI) /* ANSI */
 safetan_t safe_atan(safetan_t	y,
 					safetan_t	x)
-#else
-safetan_t safe_atan(y, x)
-safetan_t	y;
-safetan_t	x;
-#endif
-
 {
 	/* Avoid huge y/x ratios
 	------------------------*/
@@ -84,15 +71,8 @@ safetan_t	x;
 /************************** function: safe_atan2 ****************************
 * Computes atan2(y,x) avoiding the singularities at x = 0 and x << y.
 *****************************************************************************/
-#if defined(__STDC__) || defined(ANSI) /* ANSI */
 safetan_t safe_atan2(	safetan_t	y,
 						safetan_t	x)
-#else
-safetan_t safe_atan2(y, x)
-safetan_t y;
-safetan_t x;
-#endif
-
 {
 
 	/* Avoid huge y/x ratios

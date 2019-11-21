@@ -22,15 +22,6 @@ typedef double safetan_t;
 
 
 /************************* ANSI Function declarations ***********************/
-#if defined(__STDC__) || defined(ANSI) /* ANSI */
 safetan_t	safe_atan(double y, double x);
 safetan_t	safe_atan2(double y, double x);
 safetan_t	safe_tan(double alpha);
-
-
-/************************** K&R Function declarations ***********************/
-#else
-safetan_t	safe_atan();
-safetan_t	safe_atan2();
-safetan_t	safe_tan();
-#endif

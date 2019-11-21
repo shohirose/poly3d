@@ -394,7 +394,6 @@ vert_t		*first_vert_E     = NULL;	/* 1st memb of vert linked list	*/
 
 
 /************************* ANSI Function Declarations ***********************/
-#if defined(__STDC__) || defined(ANSI) /* ANSI */
 double	array_max_norm(double **a, int start_row, int end_row, int start_col,
 		int	end_col);
 int		calc_elt_parameters(elt_t *current_elt);
@@ -450,60 +449,12 @@ int		read_constants();
 void	setup_global_coords(void);
 
 
-/************************** K&R Function Declarations ***********************/
-#else
-double	array_max_norm();
-int		calc_elt_parameters();
-void	close_temp_files();
-void	copy_temp_files();
-void	determine_burgers_vectors();
-void	displ_strain();
-void	displ_strain_poly_elt();
-void	print_obj_data();
-csys_t	*find_csys();
-vert_t	*find_vert();
-int		get_double_var();
-int		get_boolean_var();
-int		get_text_var();
-void	get_elt_info();
-void	get_obj_info();
-void	get_program_args();
-void	get_vert_info();
-void	displ_strain_ics_poly_elt();
-void	print_obs_grid_data();
-int		open_files();
-void	open_temp_files();
-int		parse_command_line_args();
-void	p_error();
-void	display_msg();
-void	print_elt_data();
-void	print_elt_geometry();
-void	print_obj_titles();
-void	print_obs_grid_titles();
-void	print_obs_pt_data();
-void	print_problem_info();
-int		read_csystems();
-int		read_objs_elts_verts();
-void	read_infile();
-int		read_line();
-int		read_observation_grids();
-int		read_constants();
-void	setup_global_coords();
-#endif
-
 
 /******************************* Function: main ******************************
 * In:	argc	- number of command line arguments
 *		argv	- array of command line arguments
 *****************************************************************************/
-#if defined(__STDC__) || defined(ANSI) /* ANSI */
-         main(int argc, char *argv[])
-#else
-main(argc, argv)
-int	 argc;
-char *argv[];
-#endif
-
+int    main(int argc, char *argv[])
 {
 	time_t   start, t_reading, t_matrix, t_problem, t_object, t_obs,finish; 
 	double   elapsed_time;
@@ -575,12 +526,7 @@ char *argv[];
 /*********************** Function: print_problem_info ***********************
 * Prints general problem information to the output file.
 ****************************************************************************/
-#if defined(__STDC__) || defined(ANSI) /* ANSI */
 void     print_problem_info(void)
-#else
-void print_problem_info()
-#endif
-
 {
 	/* Print program name, version, and date
 	----------------------------------------*/
@@ -632,12 +578,7 @@ void print_problem_info()
 /************************** Function: print_obj_data ************************
 * Calculates and prints object data to the output file.
 *****************************************************************************/
-#if defined(__STDC__) || defined(ANSI) /* ANSI */
 void     print_obj_data(void)
-#else
-void print_obj_data()
-#endif
-
 {
 
 	int			elt_num;
@@ -717,11 +658,7 @@ void print_obj_data()
 * the requested displacement, strain, and stress data for each to the
 * output file.
 ************************************************************************/
-#if defined(__STDC__) || defined(ANSI) /* ANSI */
 void     print_obs_grid_data(void)
-#else
-void print_obs_grid_data()
-#endif
 {
 	obs_grid_t	*current_obs_grid;
 	int		i, j, k;
@@ -861,18 +798,7 @@ void print_obs_grid_data()
 *		   strain 		- strain tensor (global coords)
 *
 *****************************************************************************/
-#if defined(__STDC__) || defined(ANSI) /* ANSI */
 void     displ_strain(int calc_displ, int calc_strain, double x[3],double displ[3], double strain[3][3], elt_t *omit_elt)
-#else
-void displ_strain(calc_displ, calc_strain, x, displ, strain, omit_elt)
-int				calc_displ;
-int				calc_strain;
-double			x[3];
-double			displ[3];
-double			strain[3][3];
-elt_t		      *omit_elt;
-#endif
-
 {
 	elt_t	*current_elt;
 	double	elt_displ[3];
@@ -1038,22 +964,7 @@ elt_t		      *omit_elt;
 * Out:	elt_displ  	- displacement vector (global coords) due to this elt
 *		elt_strain	- strain tensor (global coords) due to this elt
 ****************************************************************************/
-#if defined(__STDC__) || defined(ANSI) /* ANSI */
 void     displ_strain_poly_elt(int calc_displ, int calc_strain,elt_t *current_elt, double x[3], double elt_displ[3],double elt_strain[3][3], elt_t *omit_elt, int under)
-#else
-void displ_strain_poly_elt(calc_displ, calc_strain, current_elt, x,
-	elt_displ, elt_strain, omit_elt,under)
-int		calc_displ;
-int		calc_strain;
-elt_t	*current_elt;
-//elt_t   **current_elt;
-double	x[3][3];
-double	elt_displ[3];
-double	elt_strain[3][3];
-elt_t	*omit_elt;
-int under;
-#endif
-
 {
 	double	displ_ic[3][3];
 	double	strain_ic[3][3][3];
@@ -1145,20 +1056,7 @@ int under;
 *                        	  due to a unit ith Burgers vector component 
 *                        	  (bc_coord_sys coords)
 ****************************************************************************/
-#if defined(__STDC__) || defined(ANSI) /* ANSI */
 void     displ_strain_ics_poly_elt(int calc_displ, int calc_strain,elt_t *current_elt, double x[3], double displ_ic[3][3],double strain_ic[3][3][3], elt_t *omit_elt)
-#else
-void displ_strain_ics_poly_elt(calc_displ, calc_strain, current_elt, x, 
-	displ_ic, strain_ic, omit_elt)
-int		calc_displ;
-int		calc_strain;
-elt_t	*current_elt;
-double	x[3];
-double	displ_ic[3][3];
-double	strain_ic[3][3][3];
-elt_t	*omit_elt;
-#endif
-
 {
 	int		i, j, k, l;
 	int		seg;
@@ -1419,12 +1317,7 @@ elt_t	*omit_elt;
 /**************************** Function: read_infile **************************
 * Reads the input file and sets up the problem to be solved.
 ******************************************************************************/
-#if defined(__STDC__) || defined(ANSI) /* ANSI */
 void     read_infile(void)
-#else
-void read_infile()
-#endif
-
 {
 
 	/* Read problem constants
@@ -1452,13 +1345,7 @@ void read_infile()
 *
 * In:	name	- name of the coordinate system to find
 *****************************************************************************/
-#if defined(__STDC__) || defined(ANSI) /* ANSI */
 csys_t*  find_csys(char *name)
-#else
-csys_t *find_csys(name)
-char *name;
-#endif
-
 {
 	csys_t *current_csys;
 
@@ -1480,13 +1367,7 @@ char *name;
 *
 * In:	name	- name of the vertex to find
 *****************************************************************************/
-#if defined(__STDC__) || defined(ANSI) /* ANSI */
 vert_t*  find_vert(char *name)
-#else
-vert_t *find_vert(name)
-char *name;
-#endif
-
 {
 	vert_t	*current_vert;
 
@@ -1511,14 +1392,7 @@ char *name;
 * 		line		- input file line number at which the error occurred
 *					  (NULL = N/A)
 *****************************************************************************/
-#if defined(__STDC__) || defined(ANSI) /* ANSI */
 void     p_error(char *error_msg, char *line)
-#else
-void p_error(error_msg, line)
-char	*error_msg;
-char	*line;
-#endif
-
 {
 	fprintf(stderr,"\nerror: %s",error_msg);
 	if (line == NULL) {
@@ -1536,13 +1410,7 @@ char	*line;
 *
 * In:	error_msg	- error message to print
 *****************************************************************************/
-#if defined(__STDC__) || defined(ANSI) /* ANSI */
 void     display_msg(char *_msg)
-#else
-void display_msg(_msg)
-char	*_msg;
-#endif
-
 {
 	fprintf(stderr,"%s\n",_msg);
 }
@@ -1552,12 +1420,7 @@ char	*_msg;
 * Defines the global coordinate system, making it the first member in the
 * linked list of coordinate systems (first_csys_E).
 *****************************************************************************/
-#if defined(__STDC__) || defined(ANSI) /* ANSI */
 void     setup_global_coords(void)
-#else
-void setup_global_coords()
-#endif
-
 {
 
 	int		i;
@@ -1592,12 +1455,7 @@ void setup_global_coords()
 * Opens the input and output files named by the external variables infile_E
 * and outfile_E
 *****************************************************************************/
-#if defined(__STDC__) || defined(ANSI) /* ANSI */
 int      open_files(void)
-#else
-int open_files()
-#endif
-
 {
 	char error_msg[MAX_ERROR_MSG];
 
@@ -1625,14 +1483,7 @@ int open_files()
 * In:	argc	- number of command line arguments
 *		argv	- the command line arguments
 *****************************************************************************/
-#if defined(__STDC__) || defined(ANSI) /* ANSI */
 int      parse_command_line_args(int argc, char *argv[])
-#else
-int parse_command_line_args(argc, argv)
-int		argc;
-char	*argv[];
-#endif
-
 {
 	int		optarg;						/* command line option/argument		*/
 	int		exit = FALSE;
@@ -1677,12 +1528,7 @@ char	*argv[];
 * Sets up remote stress and strain tensors and calls calc_elas_consts() to
 * calculate undefined elastic constants.
 *****************************************************************************/
-#if defined(__STDC__) || defined(ANSI) /* ANSI */
 int      read_constants(void)
-#else
-int read_constants()
-#endif
-
 {
 	int		numwords;
 	char	*word[MAXWORDS];
@@ -1825,12 +1671,7 @@ int read_constants()
 * reached.  Adds coordinate systems to the linked list whose first member
 * (global coords) is given by first_csys_E.
 *****************************************************************************/
-#if defined(__STDC__) || defined(ANSI) /* ANSI */
 int      read_csystems(void)
-#else
-int read_csystems()
-#endif
-
 {
 	int		numwords;
 	char	*word[MAXWORDS];
@@ -1975,12 +1816,7 @@ int read_csystems()
 * reached.  Adds observation grids to the linked list whose first member
 * (global coords) is given by first_obs_grid_E.
 *****************************************************************************/
-#if defined(__STDC__) || defined(ANSI) /* ANSI */
 int      read_observation_grids(void)
-#else
-int read_observation_grids()
-#endif
-
 {
 	int		numwords;
 	char	*word[MAXWORDS];
@@ -2194,12 +2030,7 @@ int read_observation_grids()
 * Pointers between these lists are set to indicate which elements belong to
 * an object and which vertices belong to an element.
 *****************************************************************************/
-#if defined(__STDC__) || defined(ANSI) /* ANSI */
 int      read_objs_elts_verts(void)
-#else
-int read_objs_elts_verts()
-#endif
-
 {
 	int		numwords;
 	char	*word[MAXWORDS];
@@ -2263,13 +2094,7 @@ int read_objs_elts_verts()
 *
 * In:	current_obj	- the object for which titles are to be printed
 *****************************************************************************/
-#if defined(__STDC__) || defined(ANSI) /* ANSI */
 void     print_obj_titles(obj_t *current_obj)
-#else
-void print_obj_titles(current_obj)
-obj_t *current_obj;
-#endif
-
 {
 	fprintf(ofp_E,"\n\n====================================================\n");
 	fprintf(ofp_E,    "              OBJECT: %s\n",current_obj->name);
@@ -2306,13 +2131,7 @@ obj_t *current_obj;
 *
 * In:	current_obs_grid	- the obs grid for which titles are to be printed
 *****************************************************************************/
-#if defined(__STDC__) || defined(ANSI) /* ANSI */
 void     print_obs_grid_titles(obs_grid_t *current_obs_grid)
-#else
-void print_obs_grid_titles(current_obs_grid)
-obs_grid_t *current_obs_grid;
-#endif
-
 {
 	fprintf(ofp_E,"\n\n====================================================\n");
 	fprintf(ofp_E,   "%d-D OBSERVATION GRID: %s\n",
@@ -2374,18 +2193,7 @@ obs_grid_t *current_obs_grid;
 *		displ		- the displacement of the element center due to ALL elts
 *					  EXCEPT this element
 ****************************************************************************/
-#if defined(__STDC__) || defined(ANSI) /* ANSI */
 void     print_elt_data(obj_t *current_obj, elt_t *current_elt, int elt_num,double displ[3], double stress[3][3])
-#else
-void print_elt_data(current_obj, current_elt, elt_num, 
-	displ, stress)
-obj_t	*current_obj;
-elt_t	*current_elt;
-int		elt_num;
-double	displ[3];
-double	stress[3][3];
-#endif
-
 {
 	double	half_b[3];
 	double	displ_pos[3];
@@ -2477,16 +2285,7 @@ double	stress[3][3];
 *		displ				- the displacement (global coords) at the obs pt
 *		strain				- the strain (global coords) at the obs point
 ****************************************************************************/
-#if defined(__STDC__) || defined(ANSI) /* ANSI */
 void     print_obs_pt_data(obs_grid_t *current_obs_grid, double x[3],double displ[3], double strain[3][3])
-#else
-void print_obs_pt_data(current_obs_grid, x, displ, strain)
-obs_grid_t	 *current_obs_grid;
-double	x[3];
-double	displ[3];
-double	strain[3][3];
-#endif
-
 {
 	double	stress[3][3];
 	double	prin[3];
@@ -2599,12 +2398,7 @@ double	strain[3][3];
 *                         vector components
 *   "current_elt"->b[i] - pointer to ith component of Burgers vector.
 *****************************************************************************/
-#if defined(__STDC__) || defined(ANSI) /* ANSI */
 void     determine_burgers_vectors()
-#else
-void determine_burgers_vectors()
-#endif
-
 {
 	elt_t	*elt1;
 	elt_t	*elt2;
@@ -2861,14 +2655,7 @@ void determine_burgers_vectors()
 * Out:	line	- the line read from the input file
 * In:	word[i]	- the ith word on the line (null-terminated string)
 ***************************************************************************/
-#if defined(__STDC__) || defined(ANSI) /* ANSI */
 int      read_line(char *line, char *word[])
-#else
-int read_line(line, word)
-char	*line;
-char	*word[];
-#endif
-
 {
 	int		numwords;
 	/*char	error_msg[MAX_ERROR_MSG];*/
@@ -2923,16 +2710,7 @@ char	*word[];
 *			numwords	- number of words on the input line
 * In/Out:	var			- variable to which a value is to be assigned
 *****************************************************************************/
-#if defined(__STDC__) || defined(ANSI) /* ANSI */
 int      get_double_var(double *var, char *var_name, char *word[], int numwords)
-#else
-int get_double_var(var, var_name, word, numwords)
-double	*var;
-char	*var_name;
-char	*word[];
-int		numwords;
-#endif
-
 {
 	if (!strcmp(word[CONST_NAME_POS],var_name)) {
 		if (numwords == CONST_NUM_PARAMS) {
@@ -2956,20 +2734,7 @@ int		numwords;
 *			line			- line read from the input file
 * In/Out:	var				- variable to which a value is to be assigned
 *****************************************************************************/
-#if defined(__STDC__) || defined(ANSI) /* ANSI */
 int      get_boolean_var(int *var, char *var_name, char *true_string,char *false_string, char *word[], int	numwords, char *line)
-#else
-int get_boolean_var(var, var_name, true_string, false_string, word, numwords,
-	line)
-int		*var;
-char	*var_name;
-char	*true_string;
-char	*false_string;
-char	*word[];
-int		numwords;
-char	*line;
-#endif
-
 {
 	char	error_msg[MAX_ERROR_MSG];
 
@@ -3001,17 +2766,7 @@ char	*line;
 *			line		- line read from the input file
 * In/Out:	var			- variable to which a value is to be assigned
 *****************************************************************************/
-#if defined(__STDC__) || defined(ANSI) /* ANSI */
 int      get_text_var(char **var, char *var_name, char *word[], int numwords,char *line)
-#else
-int get_text_var(var, var_name, word, numwords, line)
-char	**var;
-char	*var_name;
-char	*word[];
-int		numwords;
-char	*line;
-#endif
-
 {
 	char	error_msg[MAX_ERROR_MSG];
 	
@@ -3038,16 +2793,7 @@ char	*line;
 *			line			- the input line
 * In/Out:	current_vert	- the current (last) vertex in the linked list
 ****************************************************************************/
-#if defined(__STDC__) || defined(ANSI) /* ANSI */
 void     get_vert_info(vert_t **current_vert, int numwords, char *word[],char *line)
-#else
-void get_vert_info(current_vert, numwords, word, line)
-vert_t	**current_vert;
-int		numwords;
-char	*word[];
-char	*line;
-#endif
-
 {
 	int		i;
 	char	error_msg[MAX_ERROR_MSG];
@@ -3117,16 +2863,7 @@ char	*line;
 *			line			- the input line
 * In/Out:	current_obj		- the current (last) object in the linked list
 *****************************************************************************/
-#if defined(__STDC__) || defined(ANSI) /* ANSI */
 void     get_obj_info(obj_t **current_obj, int numwords, char *word[], char *line)
-#else
-void get_obj_info(current_obj, numwords, word, line)
-obj_t	**current_obj;
-int		numwords;
-char	*word[];
-char	*line;
-#endif
-
 {
 	int		i;
 	char	temp_char;
@@ -3209,17 +2946,7 @@ char	*line;
 * In/Out:	current_elt		- the current (last) element in the linked list
 *			current_obj		- the object to which current_elt belongs
 *****************************************************************************/
-#if defined(__STDC__) || defined(ANSI) /* ANSI */
 void     get_elt_info(elt_t **current_elt, obj_t *current_obj, int numwords,char *word[], char *line)
-#else
-void get_elt_info(current_elt, current_obj, numwords, word, line)
-elt_t	**current_elt;
-obj_t	*current_obj;
-int		numwords;
-char	*word[];
-char	*line;
-#endif
-
 {
 	int		num_vertices;
 	int		num_params;
@@ -3486,14 +3213,7 @@ char	*line;
 * In:	print	- array of flags giving the data to be printed (determines
 *				  which temp files need to be opened)
 *****************************************************************************/
-#if defined(__STDC__) || defined(ANSI) /* ANSI */
 void     open_temp_files(int print[])
-#else
-void open_temp_files(print)
-int	print[];
-#endif
-
-
 {
 	int		i;
 
@@ -3515,13 +3235,7 @@ int	print[];
 * Closes the temporary output files for displacement, strain, principal strain,
 * stress, and principal stress data.
 *****************************************************************************/
-#if defined(__STDC__) || defined(ANSI) /* ANSI */
 void     close_temp_files(void)
-#else
-void close_temp_files()
-#endif
-
-
 {
 	int		i;
 
@@ -3543,12 +3257,7 @@ void close_temp_files()
 * Copues the temporary output files for displacement, strain, principal strain,
 * stress, and principal stress data to the main output file.
 *****************************************************************************/
-#if defined(__STDC__) || defined(ANSI) /* ANSI */
 void     copy_temp_files(void)
-#else
-void copy_temp_files()
-#endif
-
 {
 		int		i;
 		FILE	*tfp;
@@ -3570,11 +3279,7 @@ void copy_temp_files()
 * Loops over all objects, printing the geometry of each element (name &
 * coordinates of each vertex) to the output file. 
 *****************************************************************************/
-#if defined(__STDC__) || defined(ANSI) /* ANSI */
 void     print_elt_geometry(void)
-#else
-void print_elt_geometry()
-#endif
 {
 	csys_t	*elt_geom_csys;
 	obj_t	*current_obj;
@@ -3654,17 +3359,7 @@ void print_elt_geometry()
 *		start_col	- index of the matrix's start column
 *		end_col		- index of the matrix's end column
 ******************************************************************************/
-#if defined(__STDC__) || defined(ANSI) /* ANSI */
 double   array_max_norm(double **a, int start_row, int end_row, int start_col,int end_col)
-#else
-double array_max_norm(a, start_row, end_row, start_col, end_col)
-double	**a;
-int		start_row;
-int		end_row;
-int		start_col;
-int		end_col;
-#endif
-
 {
 	int		i,j;
 	double	norm;
@@ -3687,12 +3382,7 @@ int		end_col;
 * symbolic constant FPROMPT is defined at compile time.
 *****************************************************************************/
 #ifdef FPROMPT
-#if defined(__STDC__) || defined(ANSI) /* ANSI */
 void     get_program_args(void)
-#else
-void get_program_args()
-#endif
-
 {
 	int		numwords;
 	char	*word[MAXWORDS];

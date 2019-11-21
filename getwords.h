@@ -18,9 +18,5 @@ SET TABSTOPS AT EVERY FOUR SPACES FOR PROPER DISPLAY
 
 
 /**************************** Function Declarations *************************/
-#if defined(__STDC__) || defined(ANSI) /* ANSI */
 int getwords(FILE *ifp, char *line, int maxline, char *word[], int maxwords,
 	char continue_char);
-#else
-int getwords();
-#endif

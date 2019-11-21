@@ -37,10 +37,6 @@ extern char *getopt_arg_E;
 
 
 /****************************** Function Declarations ************************/
-#if defined(__STDC__) || defined(ANSI) /* ANSI */
 int getoptPoly3D(char *arg_string, int argc, char *argv[]);
-#else
-int getoptPoly3D();
-#endif
 
 #endif

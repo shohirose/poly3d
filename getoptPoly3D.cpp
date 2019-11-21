@@ -24,15 +24,9 @@ char    *getopt_arg_E;
 
 
 /*************************** Function Declarations *************************/
-#if defined(__STDC__) || defined(ANSI) /* ANSI */
 struct arg_rec *read_args(int argc, char *argv[], char *arg_string);
 void add_arg(struct arg_rec **top, int i, char arg_type,
                                 char *argv[]);
-#else
-struct arg_rec *read_args();
-void add_arg();
-#endif
-
 
 /**************************** Function: getoptPoly3D ******************************
 *
@@ -58,15 +52,7 @@ void add_arg();
 *		argc		- number of command line arguments
 *		argv		- array of commane line arguments
 ****************************************************************************/
-#if defined(__STDC__) || defined(ANSI) /* ANSI */
-int               getoptPoly3D(char *arg_string, int argc, char *argv[])
-#else
-int getoptPoly3D(arg_string, argc, argv)
-char *arg_string;
-int argc;
-char *argv[];
-#endif
-              
+int               getoptPoly3D(char *arg_string, int argc, char *argv[])              
 {
 	int i=1;
 	static int args_parsed=0;
@@ -112,15 +98,7 @@ char *argv[];
 *		argc		- number of command line arguments
 *		argv		- array of commane line arguments
 ************************************************************************/
-#if defined(__STDC__) || defined(ANSI) /* ANSI */
 struct arg_rec*   read_args(int argc, char *argv[], char *arg_string)
-#else
-struct arg_rec *read_args(argc, argv, arg_string)
-int argc;
-char *argv[];
-char *arg_string;
-#endif
-
 {
 	int i=1;
 	char *c_ptr, newarg;
@@ -152,16 +130,7 @@ char *arg_string;
 *			argv		- array of command line arguments
 * In/Out:	top 		- first member of argument list
 **************************************************************************/
-#if defined(__STDC__) || defined(ANSI) /* ANSI */
 void              add_arg(struct arg_rec **top, int i, char arg_type, char *argv[])
-#else
-void add_arg(top, i, arg_type, argv)
-struct arg_rec **top;
-int i;
-char arg_type;
-char *argv[];
-#endif
-
 {
 	static struct arg_rec *last_arg;
 	struct arg_rec *test_var;

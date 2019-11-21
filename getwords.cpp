@@ -46,18 +46,7 @@ SET TABSTOPS AT EVERY FOUR SPACES FOR PROPER DISPLAY
 * Out:	line			- input line
 *		word			- array of words on input line
 ************************************************************************/
-#if defined(__STDC__) || defined(ANSI) /* ANSI */
 int getwords(FILE *ifp, char *line, int maxline, char *word[],int maxwords, char continue_char)
-#else
-int getwords(ifp, line, maxline, word, maxwords, continue_char)
-FILE	*ifp;
-char	*line;
-int 	maxline;
-char	*word[];
-int		maxwords;
-char	continue_char;
-#endif
-
 {
 	int		i;
 	int		j			= 0;					/* index for word[]			*/

@@ -23,12 +23,7 @@ SET TABSTOPS AT EVERY FOUR SPACES FOR PROPER DISPLAY
 
 
 /*************************** Function Declarations *************************/
-#if defined(__STDC__) || defined(ANSI) /* ANSI */
 double	reduce_angle(double angle);
-#else
-double	reduce_angle();
-#endif
-
 
 /*********************** Function: comninou_displ_ics ***********************
 * Calculates displacement influence coefficients for the angular dislocation.
@@ -41,17 +36,7 @@ double	reduce_angle();
 * Out:	displ_ic[i][j]	- jth component of displ at y due to unit ith Burgers
 *						  vector component
 *****************************************************************************/
-#if defined(__STDC__) || defined(ANSI) /* ANSI */
 void     comninou_displ_ics(double y[3], double a, double beta, double pr,int	 half_space, double displ_ic[3][3])
-#else
-void comninou_displ_ics(y, a, beta, pr, half_space, displ_ic)
-double y[3];
-double a;
-double beta;
-double pr;
-int	 half_space;
-double displ_ic[3][3];
-#endif
 {
 	/*double trash1[3][3];*/
 	/*double trash2[3][3];*/
@@ -419,17 +404,7 @@ double displ_ic[3][3];
 * Out:	strain_ic[i][j][k]	- jk component of strain at y due to unit ith
 *							  Burgers vector component
 *****************************************************************************/
-#if defined(__STDC__) || defined(ANSI) /* ANSI */
 void     comninou_strain_ics(double y[3], double a, double beta, double pr,int	half_space, double strain_ic[3][3][3])
-#else
-void comninou_strain_ics(y, a, beta, pr, half_space, strain_ic)
-double y[3];
-double a;
-double beta;
-double pr;
-int	 half_space;
-double strain_ic[3][3][3];
-#endif
 {
 
 	double	dummy[3][3][3];
@@ -1572,12 +1547,7 @@ double strain_ic[3][3][3];
 *
 * In:	angle	- the angle to be "reduced"
 ***************************************************************************/
-#if defined(__STDC__) || defined(ANSI) /* ANSI */
 double   reduce_angle(double angle)
-#else
-double reduce_angle(angle)
-double	angle;
-#endif
 {
 	double	two_pi	= 2.0*PI;
 

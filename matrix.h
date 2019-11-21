@@ -27,7 +27,6 @@ typedef component_t	matrix_t[3][3];
 
 
 /************************* ANSI function declarations ***********************/
-#if defined(__STDC__) || defined(ANSI) /* ANSI */
 void		add_matrices(matrix_t m1, matrix_t m2, matrix_t m3);
 void		add_vectors(vector_t v1, vector_t v2, vector_t v3);
 void		cauchy(matrix_t stress, vector_t normal_v, vector_t traction_v);
@@ -54,31 +53,3 @@ component_t	vector_magnitude(vector_t v);
 
 float		distance(vector_t v, vector_t w);
 
-
-/************************** K&R function declarations ***********************/
-#else
-void		add_matrices();
-void		add_vectors();
-void		cauchy();
-void		copy_vector();
-void		copy_matrix();
-void		cross_product();
-component_t	dot_product();
-void		initialize_matrix();
-void		initialize_vector();
-void		normalize_vector();
-void		matrix_mult();
-void		matrix_vector_mult();
-void		principal();
-void		rotate_tensor();
-void		rotate_vector();
-void		scalar_matrix_mult();
-void		scalar_vector_mult();
-void		subtract_vectors();
-void		subtract_matrices();
-void		transpose_matrix();
-void		transform_position_vector();
-component_t	vector_magnitude();
-
-float		distance();
-#endif
