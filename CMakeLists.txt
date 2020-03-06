@@ -11,6 +11,7 @@ target_compile_options(poly3d
     -Wall
     -Wextra
     -Wpedantic
+    -Werror
   )
 target_include_directories(poly3d
   PRIVATE
@@ -19,6 +20,7 @@ target_include_directories(poly3d
 target_compile_definitions(poly3d
   PUBLIC
     $<$<PLATFORM_ID:Windows>:_USE_MATH_DEFINES>
+    $<$<CONFIG:Debug>:DEBUG>
   )
 
 add_subdirectory(include)
